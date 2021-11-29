@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>emplist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body style="background: #f3ffff">
+<div id="wrap">
+    <a href="javascript:;" @click="logout">安全退出</a>
+    <h1>
+        Welcome!{{user.realname}}
+    </h1>
+    <div style="background: white; width: 100%">
+        <div class="list-hand">
+            <div>分类:</div>
+            <div>全部</div>
+            <div>红米手机</div>
+            <div>小米手机</div>
+            <div>黑鲨手机</div>
+            <div>小米电视</div>
+            <div>红米电视</div>
+            <div>小米笔记本</div>
+            <div>更多</input>
+            </div>
+        </div>
+    </div>
+    <div class="list-1" >
+        <div style="float: left">
+            <p>
+                <input type="button" class="button" value="添加商品" onclick="location='addEmp.html'"/>
+            </p>
+        </div>
+    </div>
+    <div class="list-body">
+        <div v-for="(emp,index) in emps" :key="emp.id" class="box-1">
+            <div style="width: 200px; height: 200px">
+                <img src="'/ems_vue/'+emp.path'" style="height: 40px">
+            </div>
+<!--            <div>-->
+<!--                {{emp.id}}-->
+<!--            </div>-->
+            <div>
+                {{emp.name}}
+            </div>
+            <div>
+                {{emp.salary}}
+            </div>
+<!--            <div>-->
+<!--                {{emp.age}}-->
+<!--            </div>-->
+            <div>
+                <a href="javascript:;" @click="delEmp(emp.id)">delete emp</a>&nbsp;
+                <a :href="'/ems_vue/updateEmp.html?id='+emp.id">update emp</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="/ems_vue/js/vue.js"></script>
+<script src="/ems_vue/js/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#wrap",
+        data: {
+            user: {
+                realname: ""
+            },
+            emps: [],
+        },
+        methods: {
+            logout() {
+                localStorage.removeItem("user");//保存退出
+                location.href = "";//刷新界面
+            },
+            //删除
+            delEmp(id) {
+                if (window.confirm("确定删除？")) {
+                    var _this = this;
+                    axios.get("http://localhost:8989/ems_vue/emp/delete?id=" + id).then(res => {
+                        if (res.data.state) {
+                            alert(res.data.msg + "点击确定刷新!");
+                            _this.findAll();//重新加载数据
+                        } else {
+                            alert(res.data.msg);
+                        }
+                    });
+                }
+
+            },
+            //查询
+            findAll() {
+                var _this = this;
+                axios.get("http://localhost:8989/ems_vue/emp/findAll").then(res => {
+                    _this.emps = res.data.records;
+                });
+            },
+
+        },
+
+        created() {
+            //vue里的生命周期函数（页面加载之前需要执行的语句)
+            var userString = localStorage.getItem("user");
+            if (userString) {
+                this.user = JSON.parse(userString);
+            } else {
+                alert("请先登录");
+                location.href = "/ems_vue/login.html";
+            }
+            this.findAll();
+        }
+    })
+</script>

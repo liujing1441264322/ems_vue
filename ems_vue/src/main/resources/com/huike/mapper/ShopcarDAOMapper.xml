@@ -1,0 +1,37 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.huike.dao.ShopcarDAO">
+
+    <!--findAll-->
+    <select id="findAll" resultType="Shopcar">
+        select id,name,path,salary,age from t_shopcar
+    </select>
+
+    <!--save-->
+    <insert id="save" parameterType="Shopcar" useGeneratedKeys="true" keyProperty="id">
+        insert  into t_shopcar values(#{id},#{name},#{path},#{salary},#{age})
+    </insert>
+
+    <!--delete-->
+    <delete id="delete" parameterType="String">
+        delete from t_shopcar where id = #{id}
+    </delete>
+
+    <!--findOne-->
+    <select id="findOne" parameterType="String" resultType="Shopcar">
+        select id,name,path,salary,age from t_shopcar
+        where id = #{id}
+    </select>
+
+    <!--update-->
+    <update id="update" parameterType="Shopcar">
+        update t_shopcar set
+                         name =#{name},
+                         path = #{path},
+                         salary = #{salary},
+                         age = #{age}
+        where
+            id = #{id}
+    </update>
+
+</mapper>

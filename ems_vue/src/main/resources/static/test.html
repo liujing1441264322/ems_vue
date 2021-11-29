@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div id="wrap">
+<body>
+<p>
+    <input type="file" ref="myPhoto" name="photo" />
+    <input type="button" @click="saveEmp" class="button" value="Add" />
+    <input type="button" @click="delEmp(16)" class="button" value="Del" />
+    <input type="button" @click="editEmp" class="button" value="Update" />
+    <input type="button" @click="findAll" class="button" value="FindAll" />
+    <input type="button" @click="findOne" class="button" value="FindOne" />
+</p>
+</body>
+</div>
+</html>
+<script src="js/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#wrap",
+        methods: { //自定义函数
+            //用来保存员工信息
+            saveEmp(){
+                console.log(this.$refs.myPhoto.files[0]);//获取文件信息
+                var formData = new FormData();
+                formData.append("name","kailing");
+                formData.append("salary",123);
+                formData.append("age",11);
+                formData.append("photo",this.$refs.myPhoto.files[0]);
+                axios({
+                    method:"post",
+                    url:"http://localhost:8989/ems_vue/emp/save",
+                    data:formData,
+                    headers:{
+                        'content-type':'multipart/form-data'
+                    }
+                }).then(res=>{
+                    console.log(res.data);
+                });
+            },
+            delEmp(id) {
+                if(window.confirm("确定要删除这条信息吗?")){
+                    axios.get("http://localhost:8989/ems_vue/emp/delete?id=" + id).then(res => {
+                        console.log(res.data);
+                    });
+                }
+            },
+
+            //处理员工信息修改
+            editEmp(){
+                var formData = new FormData();
+                formData.append("id",12)
+                formData.append("name","liling");
+                formData.append("path","aaa");
+                formData.append("salary",111);
+                formData.append("age",222);
+                formData.append("photo",this.$refs.myPhoto.files[0]);
+
+                axios({
+                    method:"post",
+                    url:"http://localhost:8989/ems_vue/emp/update",
+                    data:formData,
+                    headers:{
+                        'content-type':'multipart/form-data'
+                    }
+                }).then(res=>{
+                    console.log(res.data);
+                });
+
+            },
+            findAll() {
+                axios.get("http://localhost:8989/ems_vue/emp/findAll").then(res => {
+                    console.log(res.data);
+                });
+            },
+
+            findOne() {
+                axios.get("http://localhost:8989/ems_vue/emp/findOne?id="+12).then(res=>{
+                    console.log(res.data);
+                });
+            },
+        }
+    });
+</script>

@@ -1,0 +1,48 @@
+
+	#wrap {
+		background: #f3ffff;
+	}
+
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#box{
+		height: 100%;
+		width: 300px;
+
+	}
+	.box-1{
+		height: 300px;
+		width: 300px;
+		background: white;
+		margin: 10px 10px;
+		text-align: center;
+		display: inline-block;
+	}
+
+	.list-hand {
+		width: 1226px;
+		height: 80px;
+		margin: 0 auto;
+		margin-bottom: 10px;
+	}
+
+	.list-hand > * {
+		height: 100px;
+		float: left;
+		width: 136px;
+		text-align: center;
+		line-height: 80px;
+	}
+	.list-1{
+		margin: 0 auto;
+		width: 100px;
+		height: 50px;
+
+	}
+
+	.list-body{
+		width: 1200px;
+		margin:0 auto;
+	}

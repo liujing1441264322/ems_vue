@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>小米账号-注册</title>
+    <link rel="shortcut icon" href="img/login/logo.png">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/regist.css">
+</head>
+<style>
+    .p1{
+        float: right;
+
+    }
+    .p1 a{
+
+        text-decoration: none;
+        color: #A9A9A9;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    .p2 a{
+        text-decoration: none;
+        color: #000;
+
+        font-size: 25px;
+
+    }
+    div{
+        float: left;
+    }
+    .box{
+        position: fixed;
+        margin-top: 0px;
+    }
+
+    .box3{
+        margin-left: 700px;
+        margin-top: 40px;
+        height: 650px;
+
+    }
+    .box3.p7{
+        width: 50px;
+        height: 20px;
+    }
+
+
+</style>
+
+<body>
+<diV class="dly" id="wrap">
+
+    <div class="box">
+        <img src="mi/login/cebian.png" width="380px">
+    </div>
+
+    <p class="p1">
+        <span class="box2"><a href="index.html"><img src="mi/login/xiaomi.png" style="vertical-align: middle; "></a></span>
+        <span style="font-size: 30px; margin-right: 560px;">小米账号</span>
+        <a href="" class="a1">用户协议</a>
+        <a href="" class="a2">隐私政策</a>
+        <a href="" class="a3">帮助中心</a>
+        &nbsp;<span style="color: #A9A9A9;">|</span>
+        <select style="border: 0; color: #A9A9A9;" >
+            <option value="1">中文(简体)</option>
+            <option value="2">中文(繁体)</option>
+            <option value="3">ENGLISH</option>
+        </select>
+    </p>
+
+    <div class="box3">
+        <p class="p2">
+            <a href="login.html" >登录</a>
+            &nbsp;&nbsp;<a href="regist.html" style="color: #616161">注册</a>
+        </p>
+        <p class="p3">
+            <input type="text" name="" id="" value="" placeholder="邮箱/手机号码/小米ID" maxlength="18" v-model="user.username"  name="name" style="width: 400px;height: 70px;border: 0px solid;font-size: 18px;"/>
+        </p>
+        <div class="z3">
+            <input type="text" placeholder="请输入你的真实姓名" class="z33" v-model="user.realname" style="width: 400px;height: 70px;border: 0px solid;font-size: 18px;"/>
+        </div>
+        <p class="p4">
+            <input type="password" value="" placeholder="请输入密码" v-model="user.password" name="pwd" style="width: 400px;height: 70px;border: 0px solid;font-size: 18px;"/></p>
+
+       <p> 性别:
+
+            男
+            <input type="radio" class="inputgri"  v-model="user.sex" value="男" checked="checked"/>
+            女
+            <input type="radio" class="inputgri" v-model="user.sex"  value="女"/>
+
+       </p>
+        <p class="p6">
+            <input type="checkbox" name="" checked="checked" value="0" /><span style="color: #A9A9A9;font-size: 15px;">已阅读并同意小米账号</span><a href="" style="text-decoration: none;color: #000000;font-size: 15px;">&nbsp;用户协议&nbsp;</a><span style="color: #A9A9A9;font-size: 15px;">和</span><a href="" style="text-decoration: none;color: #000000;font-size: 15px;">&nbsp;隐私政策&nbsp;</a>
+        </p>
+        <p class="p7">
+            <a href=""><input type="button" value="注册" name="in1" @click="register" style="width: 400px;height: 60px; background-color: #ffbe99;color: whitesmoke;
+				border: red;"></a>
+        </p>
+        <p class="p8">
+            <a href="" style="text-decoration: none; color: orange;font-size: 17px;">忘记密码？</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration: none; color: orange;font-size: 17px;">使用手机号登录</a>
+        </p>
+        <p class="p9" style="color: #A9A9A9; text-align: center;font-size: 17px;">
+            其他方式登陆
+        </p>
+        <p class="p10">
+            <a href=""><input type="image" src="mi/login/zhifubao.png" /></a>
+            <a href=""><input type="image" src="mi/login/weixin.png" /></a>
+            <a href=""><input type="image" src="mi/login/qq.png" /></a>
+            <a href=""><input type="image" src="mi/login/weibo.png" /></a>
+        </p>
+
+    </div>
+    <div id="">
+        <p class="p11" style="
+                                margin-left: 660px;
+                                /*overflow: hidden;*/
+                                /*white-space: nowrap;*/
+                                /*text-overflow: ellipsis;*/
+
+                                bottom: 20px;
+                                color: #999;
+                                font-size: 12px;" >
+            小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
+<script src="/ems_vue/js/vue.js"></script>
+<script src="/ems_vue/js/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el:"#wrap",
+        data:{
+            user:{
+
+            }
+        },
+        methods:{
+            register(){
+                // alert("ok");
+                axios.post("http://localhost:8989/ems_vue/user/register",this.user).then(res=>{
+                    if (res.data.status){
+                        alert("已经注册成功，点击确定进行登录");
+                        location.href="/ems_vue/login.html";
+                    }else{
+                        alert(res.data.msg);
+                    }
+                })
+            }
+        }
+
+
+    })
+
+
+</script>

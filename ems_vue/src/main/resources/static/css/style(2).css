@@ -1,0 +1,248 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.carhand-0{
+	width: 100%;
+	background: white;
+	border-bottom: solid 2px #ff6700;
+	height: 102px;
+	margin-bottom: 20px;
+}
+.carhand-1{
+	width: 1226px;
+	height: 100px;
+	margin: 0 auto;
+}
+.carhand-1>*{
+	float: left;
+	line-height: 100px;
+}
+.corbody{
+	margin: 0 auto;
+	width: 1226px;
+	margin-bottom: 20px;
+}
+.car-header>*{
+	width: 160px;
+	height: 50px;
+}
+.car-foot>*{
+	width: 160px;
+	height: 100px;
+}
+
+.car-all>*{
+	float: left;
+}
+.car-num>*{
+	float: left;
+}
+.mor{
+	height: 300px;
+	width: 1226px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.hrLine{
+	vertical-align:middle;
+	display:inline-block;
+	color: #989898;
+}
+.Mycar>*{
+	float: left;
+}
+.loging>*{
+	float: left;
+	font-size: 10px;
+}
+.orderHand>*{
+	float: left;
+	padding-top: 25px;
+}
+.orderBydy>*{
+	float: left;
+}
+.z>*{
+	float: left;
+}
+.buy>*{
+	float: left;
+	padding-top: 20px ;
+	font-size: 12px;
+}
+.shops1>*{
+	float: left;
+	height: 300px;
+	width: 230px;
+	background: white;
+	margin: 5px;
+	text-align: center;
+	font-size: 12px;
+}
+.o1{
+	background-color: #00000000;
+}
+.e1{
+	margin-left: 150px;
+	margin-top: 20px;
+
+}
+.e1 a{
+	text-decoration: none;
+	color: #A9A9A9;
+
+}
+.e1 a img{
+	vertical-align: middle;
+}
+.e1 span{
+	color: #A9A9A9;
+	margin-left: 50px;
+}
+#s1{
+	margin-left: 150px;
+	color: #A9A9A9;
+}
+.e2{
+	margin-left: 250px;
+	margin-top: 40px;
+}
+.e2 span{
+	font-size: 10px;
+	color: #424242;
+
+}
+.e3 li{
+	list-style: none;
+	margin-left: 240px;
+}
+.e3 li a{
+	text-decoration: none;
+	color: #A9A9A9;
+	font-size: 5px;
+}
+.e3 #l1{
+	margin-top: 20px;
+}
+.e4 {
+	float: left;
+	width: auto;
+	margin-top: 80px;
+	background-color: #fafafa;
+
+
+}
+.e4 span{
+	color:  #A9A9A9;
+}
+.e4 span a{
+	text-decoration: none;
+	color:  #A9A9A9;
+	font-size: 5px;
+
+}
+
+.e5 span{
+
+	font-size: 20px;
+	color: #A9A9A9;
+	font-family: "楷体";
+
+}
+.Nav{
+	position: fixed;
+	width: 50px;
+	height: 270px;
+	background: white;
+	top: 30%;
+	right: 5px;
+	z-index: 99999;
+}
+.Nav>*{
+	padding: 10px;
+	text-align: center;
+}
+
+li{
+	list-style: none;
+	float: left;
+}
+ul img{
+	width: 960px;
+	height: auto;
+
+}
+.container{
+	width: 940px;
+	height: 544px;
+	margin: 50px auto 0;
+	overflow: hidden;
+	position: relative;
+	border: 0px solid black;
+	margin-right: 155px;
+	animation: lunbo1 1s linear;
+	animation: lunbo2 2s linear;
+	animation: lunbo3 3s linear;
+}
+ol{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	padding: 10px;
+	margin-left: -50px;
+	z-index: 999;
+
+}
+ol li{
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	border: 1px solid red;
+	border-radius: 50%;
+	margin: 0 10px;
+}
+.container ul{
+	animation:Yui 3s cubic-bezier(0, 1, 0, 1) 1s infinite ;
+	width: 400%;
+
+}
+@keyframes Yui{
+	0% {
+		transform: translateX(0px);
+	}
+	33% {
+		transform: translateX(-960px);
+	}
+	66% {
+		transform: translateX(-1920px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+
+}
+ol li {
+	animation:focus 3s linear infinite ;//时间要和图片保持一致
+}
+ol li:nth-child(1) {
+	animation-delay: 0s;
+}
+ol li:nth-child(2) {
+	animation-delay: 1s;
+}
+ol li:nth-child(3) {
+	animation-delay: 2s;
+}
+
+@keyframes focus {
+	0% {
+		background-color: #000;
+	}
+	20% {
+		background-color: #000;
+	}
+	30% {
+		background-color: #fff;
+	}
+}
